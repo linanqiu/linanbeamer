@@ -1,0 +1,248 @@
+\documentclass[9pt, compress]{beamer}
+\usepackage{linanbeamer}e
+
+\begin{document}
+\title{Literature Review and Data} 
+\author{Linan Qiu} 
+\date{\today} 
+
+\frame{\titlepage} 
+
+\frame{\frametitle{Table of contents}\tableofcontents} 
+
+\section{Introduction}
+
+\begin{frame}[fragile]
+\frametitle{Data Collection}
+We have collected substantial data amounting to more than 20GB. These include
+\begin{itemize}
+\item Reddit data for the past 1 year on these topics: \texttt{bitcoin} \texttt{silkroad} \texttt{cryptocurrency}
+\item Individual trades for most exchanges in most currencies for \textbf{Bitcoins} for the past 3 years
+\item Leaked MtGox data
+\item Standard public data on Bitcoins (daily prices, volumes etc) including Google Trends
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Thesis Direction}
+Project can proceed in one (or few) of the following directions
+
+\begin{itemize}
+\item Effect of Bitcoin demand/supply and social media on Bitcoin pricing and adoption
+\item Network effects of Bitcoin exchanges and Cryptocurrencies: winner take all or multi-participant equilibrium
+\item Who uses Bitcoins?
+\end{itemize}
+\end{frame}
+
+\section{Background}
+\subsection{What are Bitcoins}
+\begin{frame}[fragile]
+\frametitle{Bitcoin Features}
+Key Bitcoin concepts
+\begin{itemize}
+\item Cryptographic Currency (more than 200 cryptocurrencies)
+\item Owned by Bitcoin addresses
+\item "Mined" by calculating answers to tough questions that are easy to verify (hashes)
+\item Value by consensus on blockchain
+\item Potentially anonymous
+\item Multiple exchanges
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Supply of Bitcoins}
+Let $S_b$ be the total stock of Bitcoins available in the market denominated in number of Bitcoins.
+
+\[\frac{d S_b} {dt} =  \frac{50}{2^{\left(\frac{t - 2009}{4}\right)}}\]
+
+until $S_b \approx \bar{S_b} = 21,000,000$ 
+\end{frame}
+
+\subsection{Literature Review}
+\subsubsection{Economics of Bitcoin Price Formation}
+\begin{frame}[fragile]
+\frametitle{Economics of Bitcoin Price Formation}
+
+Ciaian Rajcaniova Kancas (2014) analyzed Bitcoin price movements with respect to three factors: 
+\begin{itemize}
+\item Money demand and supply
+\item Economic fundamentals
+\item Attractiveness for Investors
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\textbf{Money supply} is given by 
+
+\[M_s = P_b B\]
+
+where $M_s$ is the bitcoin money supply, $P_B$ is the price of Bitcoins denominated in USD, and $B$ is the total stock of Bitcoins in circulation.
+
+\textbf{Money demand} is given by
+
+\[M_d = \frac{PY}{V}\]
+
+where $M_d$ is bitcoin money demand, $P$ is the general price level of all goods (kept as a constant), $Y$ is the size of the Bitcoin economy, and $V$ is the velocity of circulation of Bitcoins.
+\end{frame}
+
+\begin{frame}[fragile]
+These proxies are used for the variables:
+
+\begin{itemize}
+\item $P_B$ (Price of Bitcoins) can be aggregated over several exchanges. 
+\item $B$ (Stock of Bitcoins) data is available publicly.
+\item $Y$ (Size of Bitcoin economy) We can use the \emph{number of unique Bitcoin transactions per day} and \emph{number of unique Bitcoin addresses used per day}.
+\item $V$ (Velocity of transaction) We can use \emph{Bitcoins days destroyed}, a very good proxy for transaction volume. The variable is calculated by taking number of Bitcoins in a transaction and multiplying it by the number of days since those coins were last spent, giving lower weightage to rapidly transacted Bitcoins (eg. in change)
+\item $P$ (Price level of global economy) \textbf{authors used USD/Euro exchange rate, which is strange given that this should be kept as a constant}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+This entire expression can then be expressed as 
+
+\[P_B = \frac{PY}{VB}\]
+
+or (where $a = \log{A}$)
+
+\[p_{B,t} = \beta_0 + \beta_1 y_t + \beta_2 v_t + \beta_3 b_t + \epsilon_t\]
+
+The authors then added two other factors
+
+\begin{itemize}
+\item Global economic fundamentals $e_t$, proxied using oil prices
+\item Attractiveness to investors $a_t$, proxied using Wikipedia hits, Cryptocointalk forum signups
+\end{itemize}
+
+Resulting in
+
+\[p_{B,t} = \beta_0 + \beta_1 y_t + \beta_2 v_t + \beta_3 b_t + \beta_4 e_t + \beta_5 a_t + \epsilon_t\]
+
+\end{frame}
+
+\subsubsection{Network Effects of Bitcoin Exchanges and Cryptocurrencies}
+\begin{frame}[fragile]
+\frametitle{Network Effects of Exchanges and Currencies}
+Given that there are many Bitcoin exchanges and many cryptocurrencies, Gandal and Halaburda (2014) asks if there will eventually be 
+
+\begin{itemize}
+\item Many exchanges or one exchange
+\begin{itemize}
+\item Sellers and buyers both prefer exchanges with more sellers and buyers for higher liquidity
+\item At the same time, sellers prefer exchanges with fewer sellers for less competition
+\end{itemize}
+\item Many currencies or one exchange
+\begin{itemize}
+\item If currencies are valued as a form of exchange, one currency should prevail
+\item If however they are valued as financial assets, many currencies can prevail
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+Gandal and Halaburda (2014)'s research also provides insights into inter-exchange arbitrage opportunities. They conclude the following
+
+\begin{itemize}
+\item Multiple exchanges exist in equilibrium: regression of prices between different exchanges produced results statistically insignificant from 1.0
+\item Multiple currencies exist in equilibrium: group of winners situation -- group appreciates relative to others, while within the group currencies move in tandem
+\item Lack of arbitrage opportunities between multiple exchanges
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+However, the authors' \textbf{data is not sufficient}.
+
+\begin{itemize}
+\item Used only data from three exchanges denominated only in USD
+\item Used only end of day data, eliminating possibility for intra-day arbitrage opportunities
+\end{itemize}
+
+Several traders criticized the paper, citing
+
+\begin{quote}
+"The study has to be done on actual traded prices if it's looking historically. Arbitrage opportunities don't last 24-hour periods. In bitcoin they last minutes, if not seconds."
+\end{quote}
+
+\begin{quote}
+"I make a significant portion of my income from conducting arbitrage between different bitcoin exchanges. The [second half of 2013] was a very profitable time for arbitrage strategies."
+\end{quote}
+\url{http://www.coindesk.com/bank-canada-research-cryptocurrency-arbitrage-doesnt-exist/}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Who Uses Bitcoins}
+Wilson Yelowitz (2014) used Google Trends data to examine determinants of interest in Bitcoin. They constructed proxies fofour possible clientele: 
+
+\begin{itemize}
+\item Computer programming enthusiast
+\item Speculative investors
+\item Libertarians
+\item Criminals
+\end{itemize}
+
+and assigned search terms for these groups. They found that computer programming and illegal activity search terms are positively correlated with Bitcoin interest, while Libertarian and investment terms are not.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Bitcoin and the PPP Puzzle}
+Roure and Tasca (2014) used Bitcoin as an interesting experiment for testing Purchasing Price Parity (PPP). They used prices for marijuana on the Silk Road (online hidden market place that transacts using Bitcoins) and reported prices on websites in USD. They concluded that PPP holds.
+\end{frame}
+
+\section{Data}
+
+\subsection{Reddit Data}
+\begin{frame}[fragile]
+\frametitle{Reddit Data}
+This is a single Reddit thread.
+
+\begin{lstlisting}
+"domain": "self.Bitcoin",
+"subreddit": "Bitcoin",
+"selftext": "Companies like Circle, Coinbase, and Bitpay are making it easier for everyone to get Bitcoins, and you can always just keep your coins on their online wallets, a couple of which are insured, or maybe use a service like MyVault on coinbase.  But for the people that wan't to manage their own Bitcoins and paper wallets, whats the easiest way to make them?",
+"id": "2i7zyx",
+"author": "v3ra1ynn",
+"created": 1412398119,
+"title": "Paper wallets are one of the best ways to keep your coins safe and unhackable, but what's the easiest way to create them?"
+\end{lstlisting}
+
+We have 1GB of this data.
+\end{frame}
+
+\begin{frame}[fragile]
+This is a single Reddit comment in a thread.
+
+\begin{lstlisting}
+"subreddit": "Bitcoin",
+"selftext": "Hi all,\n\nI've been doing a ton of research recently. Right now I want to buy a very small amount of btc to play with (like .1 btc), just transferring between wallets and seeing how it all works for real. I have the blockchain app on my phone which I read is good and trustworthy and the corresponding web interface...",
+"subreddit_id": "t5_2s3qj",
+"created": 1362892456,
+"title": "About ready to make the plunge - just need a small amount of info"
+\end{lstlisting}
+
+We have 4GB of this data.
+\end{frame}
+
+\subsection{Trade Data}
+\begin{frame}[fragile]
+\frametitle{Trade Data}
+We have 237 sets of data, each being a \textbf{Exchange-Currency} pair.
+
+Largest ones are \textbf{okcoinCNY, btceUSD, btcnCNY, mtgoxUSD, bitstampUSD, bitfinexUSD} each having more than 400mb worth of trades. 
+
+Formatted as \texttt{time, price, volume}
+\end{frame}
+
+\section{Further Directions}
+
+\begin{frame}[fragile]
+\frametitle{Research Directions}
+We can investigate
+
+\begin{itemize}
+\item Inter-exchange arbitrage opportunities (and hence equilibria for multiple exchanges) using by the minute data from more exchanges
+\item Pricing factors using more extensive social media data and natural language processing techniques (sentiment analysis)
+\end{itemize}
+\end{frame}
+
+\end{document}
+
